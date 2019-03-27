@@ -10,7 +10,7 @@
       "20": "icons/20.png", 
       "32": "icons/32.png", 
       "40": "icons/40.png"
-    }, 
+    },
     "default_popup": "popup.html", 
     "default_title": "movit"
   },
