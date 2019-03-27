@@ -52,7 +52,7 @@
   }
 
   function disable() {
-    update(1);
+    update("1.0");
     observer.disconnect();
     observer = null;
     videos = [];

@@ -1,5 +1,6 @@
 {
   "name": "movit",
+  "short_name": "movit",
   "version": "0.0.1",
   "description": "the video speed driver",
   "author": "Andrea Giammarchi",
