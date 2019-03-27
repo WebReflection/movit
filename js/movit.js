@@ -17,34 +17,35 @@
 (function (browser) {
 
   var observer = null;
-  var videos = [];
+  var speed = "1.0";
   var timer = 0;
+  var videos = [];
 
   browser.storage.onChanged.addListener(onChanged);
   onChanged();
 
-  function enable(speed) {
+  function enable() {
     observer = new MutationObserver(function (mutations) {
       var length = mutations.length;
       var i = 0;
       while (i < length) {
         if (mutations[i++].addedNodes.length) {
           clearTimeout(timer);
-          timer = setTimeout(queryAndUpdate, 300, speed);
+          timer = setTimeout(queryAndUpdate, 300);
           return;
         }
       }
     });
     observer.observe(document, {childList: true, subtree: true});
-    queryAndUpdate(speed);
+    queryAndUpdate();
   }
 
-  function queryAndUpdate(speed) {
+  function queryAndUpdate() {
     videos = document.querySelectorAll('video');
-    update(speed);
+    update();
   }
 
-  function update(speed) {
+  function update() {
     var length = videos.length;
     var i = 0;
     while (i < length)
@@ -52,20 +53,24 @@
   }
 
   function disable() {
-    update("1.0");
+    clearTimeout(timer);
     observer.disconnect();
     observer = null;
+    speed = "1.0";
+    timer = 0;
+    update();
     videos = [];
   }
 
   function onChanged() {
     browser.storage.local.get('info', function (data) {
       var info = data.info || {checked: false, speed: "1.0"};
+      speed = info.speed;
       if (info.checked) {
         if (observer)
-          update(info.speed);
+          update();
         else
-          enable(info.speed);
+          enable();
       }
       else if (observer)
         disable();
