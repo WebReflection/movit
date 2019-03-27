@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+rm -rf *.zip
+mkdir -p movit/icons
+cp -R js movit/
+cp icons/*.png movit/icons/
+cp LICENSE movit/
+cp manifest.json movit/
+cp popup.html movit/
+zip -r ./movit.zip movit
+rm -rf movit
