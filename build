@@ -7,5 +7,7 @@ cp icons/*.png movit/icons/
 cp LICENSE movit/
 cp manifest.json movit/
 cp popup.html movit/
-zip -r ./movit.zip movit
+cd movit
+zip -r -FS ../movit.zip * --exclude *.git*
+cd -
 rm -rf movit
