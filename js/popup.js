@@ -59,4 +59,4 @@
     });
   }
 
-}(window.chrome || window.browser));
+}(window.chrome || browser));
