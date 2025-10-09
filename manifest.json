@@ -1,11 +1,11 @@
 {
   "name": "movit",
   "short_name": "movit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "the video speed driver",
   "author": "Andrea Giammarchi",
-  "manifest_version": 2,
-  "browser_action": {
+  "manifest_version": 3,
+  "action": {
     "default_icon": {
       "16": "icons/16.png", 
       "20": "icons/20.png", 
@@ -30,7 +30,9 @@
     "128": "icons/128.png"
   },
   "permissions": [
-    "<all_urls>",
     "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ]
 }
